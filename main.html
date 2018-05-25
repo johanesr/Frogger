@@ -37,14 +37,48 @@
     var mat = createMat(scene);
 
     var box = new BABYLON.Mesh.CreateBox("box", 1.0, scene);
-    box.position = new BABYLON.Vector3(0, 0.5, 0);
+    box.position = new BABYLON.Vector3(0, 0.5, 10 );
     box.physicsImpostor = new BABYLON.PhysicsImpostor(box,
     BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 1, friction: 0.2},scene)
 
     var box2 = new BABYLON.Mesh.CreateBox("box2", 1.0, scene);
-    box2.position = new BABYLON.Vector3(-20, 0.5, -10);
+    box2.position = new BABYLON.Vector3(20, 0.5, -10);
     box2.physicsImpostor = new BABYLON.PhysicsImpostor(box2,
     BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene)
+
+    var animationBox = new BABYLON.Animation("myAnimation", "scaling.x", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+    var keys = [];
+
+    keys.push({
+      frame: 0,
+      value: new BABYLON.Vector3(box.position.x, box.position.y, box.position.z)
+    });
+
+    keys.push({
+      frame: 7,
+      value: new BABYLON.Vector3(box.position.x, box.position.y+0.5, box.position.z-0.25)
+    });
+
+    keys.push({
+      frame: 15,
+      value: new BABYLON.Vector3(box.position.x, box.position.y+1, box.position.z-0.5)
+    });
+
+    keys.push({
+      frame: 23,
+      value: new BABYLON.Vector3(box.position.x, box.position.y+0.5, box.position.z-0.75)
+    });
+    keys.push({
+      frame: 30,
+      value: new BABYLON.Vector3(box.position.x, box.position.y, box.position.z-1)
+    });
+
+
+    animationBox.setKeys(keys);
+
+    box.animations = [];
+    box.animations.push(animationBox);
+
 
     var mat2 = createMat(scene);
 
@@ -53,19 +87,26 @@
 
     var camera = new BABYLON.FollowCamera("Camera", new BABYLON.Vector3(0, 4.5 ,10), scene);
     camera.lockedTarget = box;
-    camera.radius = 10;
-    camera.heightOffSet = 0;
+    camera.radius = 15;
+    camera.heightOffSet = 5;
     camera.cameraAcceleration = 0.5;
     camera.attachControl(canvas, true);
 
+    scene.render();
 
     engine.runRenderLoop(function()
     {
       // box.physicsImpostor.applyImpulse(new BABYLON.Vector3(-0.5,0,0),
       // box.getAbsolutePosition());
-          box.position.x = box.position.x - 0.25;
-          scene.render();
-          console.log(camera.position);
+          box2.position.x = box2.position.x - 0.15;
+          window.onkeydown = function(event)
+          {
+            if(event.keyCode==87)
+            {
+              scene.beginAnimation(box, 0, 30);
+            }
+          }
+          scene.render(); 
     });
   });
 
