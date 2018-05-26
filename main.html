@@ -56,10 +56,11 @@
     box2.material = mat2;
 
     var camera = new BABYLON.FollowCamera("Camera", new BABYLON.Vector3(0, 4.5 ,10), scene);
-    camera.lockedTarget = box;
-    camera.radius = 15;
-    camera.heightOffSet = 5;
+    camera.radius = 25;
+    camera.heightOffSet = 0;
+    //camera.rotationOffset = -10;
     camera.cameraAcceleration = 0.5;
+    camera.lockedTarget = box;
     camera.attachControl(canvas, true);
 
     //scene.render();
@@ -70,6 +71,11 @@
       {
         jump = true;
         forward(box,scene,box.position, function(){ jump = false});
+      }
+      if(event.keyCode==83 && jump==false)
+      {
+        jump = true;
+        back(box,scene,box.position, function(){ jump = false});
       }
     }
 
