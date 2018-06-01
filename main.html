@@ -46,9 +46,10 @@
     // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 1, friction: 0.2},scene);
 
     var box2 = new BABYLON.Mesh.CreateBox("box2", 1.0, scene);
-    box2.position = new BABYLON.Vector3(20, 0.5, -10);
+    box2.position = new BABYLON.Vector3(60, 0.5, -10);
     box2.physicsImpostor = new BABYLON.PhysicsImpostor(box2,
-    BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene)
+    BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
+    box2.isVisible=false;
 
     var mat2 = createMat(scene);
 
@@ -63,6 +64,8 @@
     camera.lockedTarget = box;
     camera.attachControl(canvas, true);
 
+    var clones = [];
+
     //scene.render();
     var test;
     window.onkeydown = function(event)
@@ -71,6 +74,8 @@
       {
         jump = true;
         forward(box,scene,box.position, function(){ jump = false});
+        var clone = box2.createInstance("box2"+1);
+        clones.push(clone);
       }
       if(event.keyCode==83 && jump==false)
       {
@@ -83,8 +88,11 @@
     {
       // box.physicsImpostor.applyImpulse(new BABYLON.Vector3(-0.5,0,0),
       // box.getAbsolutePosition());
-          box2.position.x = box2.position.x - 0.05;
-          scene.render();
+      for(var i = 0; i<clones.length;i++)
+      {
+        clones[i].position.x = clones[i].position.x - 0.25;
+      }
+      scene.render();
     });
   });
 
