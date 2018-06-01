@@ -1,0 +1,658 @@
+Exporter version: 5.6.2, Blender version: 2.79 (sub 0)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used:
+		selected layers only:  false
+		inline textures:  false
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		texture directory:  C:\Users\Nicolas Bryan\Documents\Computer Graphics\Frogger\
+	Python World class constructor completed
+	processing begun of mesh:  Cube_4_3
+		processing begun of Standard material:  Elbow_fuse_1_2_18
+			Diffuse texture found "Kd.010"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  666
+		num normals        :  666
+		num uvs            :  1332
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1836
+	processing begun of mesh:  rightlegjoints_2
+		processing begun of Standard material:  Elbow_fuse_1_2_20
+			Diffuse texture found "Kd.013"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Body_1
+		processing begun of Standard material:  Elbow_fuse_1_2_55
+			Diffuse texture found "Kd.051"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  179
+		num normals        :  179
+		num uvs            :  358
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  282
+	processing begun of mesh:  EAR
+		processing begun of Standard material:  Elbow_fuse_1_2_40
+			Diffuse texture found "Kd.035"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  1724
+		num normals        :  1724
+		num uvs            :  3448
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2922
+	processing begun of mesh:  rightarmjoints_4_2
+		processing begun of Standard material:  Elbow_fuse_1_2_54
+			Diffuse texture found "Kd.050"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Thigh_2
+		processing begun of Standard material:  Elbow_fuse_1_2_1
+			Diffuse texture found "Kd.001"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  60
+		num normals        :  60
+		num uvs            :  120
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  84
+	processing begun of mesh:  Bodyplates_1
+		processing begun of Standard material:  Elbow_fuse_1_2_56
+			Diffuse texture found "Kd.052"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  2682
+		num normals        :  2682
+		num uvs            :  5364
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  7344
+	processing begun of mesh:  Shoulder_bone_2
+		processing begun of Standard material:  Elbow_fuse_1_2_45
+			Diffuse texture found "Kd.040"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  154
+		num normals        :  154
+		num uvs            :  308
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  432
+	processing begun of mesh:  Righthand
+		processing begun of Standard material:  Elbow_fuse_1_2_47
+			Diffuse texture found "Kd.042"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  800
+		num normals        :  800
+		num uvs            :  1600
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2016
+		WARNING: # of 0 area faces found:  6
+	processing begun of mesh:  rightarmjoints_4
+		processing begun of Standard material:  Elbow_fuse_1_2_34
+			Diffuse texture found "Kd.028"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Shoulder_bone_4
+		processing begun of Standard material:  Elbow_fuse_1_2_8
+			Diffuse texture found "Kd.056"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  154
+		num normals        :  154
+		num uvs            :  308
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  432
+	processing begun of mesh:  Sphere
+		processing begun of Standard material:  Sphere_1.001
+			Diffuse texture found "Kd.061"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  470
+		num normals        :  470
+		num uvs            :  940
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1584
+	processing begun of mesh:  rightarmjoints_2
+		processing begun of Standard material:  Elbow_fuse_1_2_26
+			Diffuse texture found "Kd.019"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Elbow_fuse_1_2
+		processing begun of Standard material:  Elbow_fuse_1_2_13
+			Diffuse texture found "Kd.005"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  509
+		num normals        :  509
+		num uvs            :  1018
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  756
+	processing begun of mesh:  rightarmjoints_5_2
+		processing begun of Standard material:  Elbow_fuse_1_2_51
+			Diffuse texture found "Kd.047"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  leftlegjoints_3
+		processing begun of Standard material:  Elbow_fuse_1_2_10
+			Diffuse texture found "Kd.002"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Elbow_fuse_2
+		processing begun of Standard material:  Elbow_fuse_1_2_43
+			Diffuse texture found "Kd.038"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  509
+		num normals        :  509
+		num uvs            :  1018
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  756
+	processing begun of mesh:  rightarmjoints_2_2
+		processing begun of Standard material:  Elbow_fuse_1_2_50
+			Diffuse texture found "Kd.046"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Sphere_1
+		processing begun of Standard material:  Sphere_1_1
+			Diffuse texture found "Kd.062"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  470
+		num normals        :  470
+		num uvs            :  940
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1584
+	processing begun of mesh:  Elbow
+		processing begun of Standard material:  Elbow_fuse_1_2_27
+			Diffuse texture found "Kd.020"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  91
+		num normals        :  91
+		num uvs            :  182
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  132
+	processing begun of mesh:  rightarmjoints_3_2
+		processing begun of Standard material:  Elbow_fuse_1_2_49
+			Diffuse texture found "Kd.044"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Left_Foot_1
+		processing begun of Standard material:  Elbow_fuse_1_2_9
+			Diffuse texture found "Kd.057"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  988
+		num normals        :  988
+		num uvs            :  1976
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2556
+	processing begun of mesh:  Knee_2
+		processing begun of Standard material:  Elbow_fuse_1_2
+			Diffuse texture found "Kd"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  208
+		num normals        :  208
+		num uvs            :  416
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  276
+	processing begun of mesh:  rightarmjoints_3
+		processing begun of Standard material:  Elbow_fuse_1_2_29
+			Diffuse texture found "Kd.022"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Elbow_fuse_4
+		processing begun of Standard material:  Elbow_fuse_1_2_2
+			Diffuse texture found "Kd.012"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  509
+		num normals        :  509
+		num uvs            :  1018
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  756
+	processing begun of mesh:  Reye_1
+		processing begun of Standard material:  Sphere
+			Diffuse texture found "Kd.059"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  396
+		num normals        :  396
+		num uvs            :  792
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1728
+	processing begun of mesh:  Shoulder_bone
+		processing begun of Standard material:  Elbow_fuse_1_2_37
+			Diffuse texture found "Kd.031"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  154
+		num normals        :  154
+		num uvs            :  308
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  432
+	processing begun of mesh:  rightarmjoints_1
+		processing begun of Standard material:  Elbow_fuse_1_2_48
+			Diffuse texture found "Kd.043"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Name_Plate_1
+		processing begun of Standard material:  Name_Plate
+			Diffuse texture found "Kd.058"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  29
+		num normals        :  29
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Head
+		processing begun of Standard material:  Elbow_fuse_1_2_39
+			Diffuse texture found "Kd.033"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  416
+		num normals        :  416
+		num uvs            :  832
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  690
+	processing begun of mesh:  leftlegjoints_2
+		processing begun of Standard material:  Elbow_fuse_1_2_5
+			Diffuse texture found "Kd.045"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Elbow_2
+		processing begun of Standard material:  Elbow_fuse_1_2_46
+			Diffuse texture found "Kd.041"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  93
+		num normals        :  93
+		num uvs            :  186
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  132
+	processing begun of mesh:  Shoulder_bone_3
+		processing begun of Standard material:  Elbow_fuse_1_2_23
+			Diffuse texture found "Kd.016"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  154
+		num normals        :  154
+		num uvs            :  308
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  432
+	processing begun of mesh:  Shoulderfuse
+		processing begun of Standard material:  Elbow_fuse_1_2_32
+			Diffuse texture found "Kd.026"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  440
+		num normals        :  440
+		num uvs            :  880
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  660
+	processing begun of mesh:  Cube_4
+		processing begun of Standard material:  Elbow_fuse_1_2_30
+			Diffuse texture found "Kd.024"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  666
+		num normals        :  666
+		num uvs            :  1332
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1836
+	processing begun of mesh:  Elbow_fuse_2_2
+		processing begun of Standard material:  Elbow_fuse_1_2_14
+			Diffuse texture found "Kd.006"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  509
+		num normals        :  509
+		num uvs            :  1018
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  756
+	processing begun of mesh:  Elbow_fuse_5
+		processing begun of Standard material:  Elbow_fuse_1_2_16
+			Diffuse texture found "Kd.008"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  509
+		num normals        :  509
+		num uvs            :  1018
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  756
+	processing begun of mesh:  Thigh
+		processing begun of Standard material:  Elbow_fuse_1_2_19
+			Diffuse texture found "Kd.011"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  60
+		num normals        :  60
+		num uvs            :  120
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  84
+	processing begun of mesh:  Cube_4_2
+		processing begun of Standard material:  Elbow_fuse_1_2_52
+			Diffuse texture found "Kd.048"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  666
+		num normals        :  666
+		num uvs            :  1332
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1836
+	processing begun of mesh:  Knee
+		processing begun of Standard material:  Elbow_fuse_1_2_15
+			Diffuse texture found "Kd.007"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  208
+		num normals        :  208
+		num uvs            :  416
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  276
+	processing begun of mesh:  rightlegjoints_4
+		processing begun of Standard material:  Elbow_fuse_1_2_17
+			Diffuse texture found "Kd.009"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  lefthand
+		processing begun of Standard material:  Elbow_fuse_1_2_28
+			Diffuse texture found "Kd.021"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  757
+		num normals        :  757
+		num uvs            :  1514
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1788
+		WARNING: # of 0 area faces found:  2
+	processing begun of mesh:  Shoulder_2
+		processing begun of Standard material:  Elbow_fuse_1_2_44
+			Diffuse texture found "Kd.039"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  60
+		num normals        :  60
+		num uvs            :  120
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  84
+	processing begun of mesh:  EAR_1
+		processing begun of Standard material:  Elbow_fuse_1_2_41
+			Diffuse texture found "Kd.036"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  1697
+		num normals        :  1697
+		num uvs            :  3394
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2922
+	processing begun of mesh:  rightlegjoints_5
+		processing begun of Standard material:  Elbow_fuse_1_2_25
+			Diffuse texture found "Kd.018"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  rightlegjoints
+		processing begun of Standard material:  Elbow_fuse_1_2_24
+			Diffuse texture found "Kd.017"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  leftlegjoints_5
+		processing begun of Standard material:  Elbow_fuse_1_2_11
+			Diffuse texture found "Kd.003"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Left_Foot
+		processing begun of Standard material:  Elbow_fuse_1_2_3
+			Diffuse texture found "Kd.023"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  988
+		num normals        :  988
+		num uvs            :  1976
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2556
+	processing begun of mesh:  Leye_1
+		processing begun of Standard material:  Sphere_1
+			Diffuse texture found "Kd.060"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  394
+		num normals        :  394
+		num uvs            :  788
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1728
+	processing begun of mesh:  Cube_4_4
+		processing begun of Standard material:  Elbow_fuse_1_2_6
+			Diffuse texture found "Kd.054"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  666
+		num normals        :  666
+		num uvs            :  1332
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1836
+	processing begun of mesh:  Body_2
+		processing begun of Standard material:  Elbow_fuse_1_2_57
+			Diffuse texture found "Kd.053"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  298
+		num normals        :  298
+		num uvs            :  596
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  537
+	processing begun of mesh:  Elbow_fuse
+		processing begun of Standard material:  Elbow_fuse_1_2_53
+			Diffuse texture found "Kd.049"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  509
+		num normals        :  509
+		num uvs            :  1018
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  756
+	processing begun of mesh:  leftlegjoints
+		processing begun of Standard material:  Elbow_fuse_1_2_12
+			Diffuse texture found "Kd.004"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Shoulder
+		processing begun of Standard material:  Elbow_fuse_1_2_36
+			Diffuse texture found "Kd.030"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  60
+		num normals        :  60
+		num uvs            :  120
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  84
+	processing begun of mesh:  rightlegjoints_3
+		processing begun of Standard material:  Elbow_fuse_1_2_21
+			Diffuse texture found "Kd.014"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  leftlegjoints_4
+		processing begun of Standard material:  Elbow_fuse_1_2_4
+			Diffuse texture found "Kd.034"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  batterypack
+		processing begun of Standard material:  Elbow_fuse_1_2_42
+			Diffuse texture found "Kd.037"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  83
+		num normals        :  83
+		num uvs            :  166
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  144
+	processing begun of mesh:  NECK
+		processing begun of Standard material:  Elbow_fuse_1_2_38
+			Diffuse texture found "Kd.032"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  154
+		num normals        :  154
+		num uvs            :  308
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  432
+	processing begun of mesh:  Elbow_fuse_1
+		processing begun of Standard material:  Elbow_fuse_1_2_22
+			Diffuse texture found "Kd.015"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  509
+		num normals        :  509
+		num uvs            :  1018
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  756
+	processing begun of mesh:  Elbow_fuse_3
+		processing begun of Standard material:  Elbow_fuse_1_2_7
+			Diffuse texture found "Kd.055"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  509
+		num normals        :  509
+		num uvs            :  1018
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  756
+	processing begun of mesh:  rightarmjoints
+		processing begun of Standard material:  Elbow_fuse_1_2_31
+			Diffuse texture found "Kd.025"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Elbowfuse
+		processing begun of Standard material:  Elbow_fuse_1_2_33
+			Diffuse texture found "Kd.027"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  440
+		num normals        :  440
+		num uvs            :  880
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  660
+	processing begun of mesh:  rightarmjoints_5
+		processing begun of Standard material:  Elbow_fuse_1_2_35
+			Diffuse texture found "Kd.029"
+				Image texture found, type:  diffuseTexture, mapped using: "UVMap"
+		num positions      :  234
+		num normals        :  234
+		num uvs            :  468
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Cube
+		processing begun of Standard material:  Material
+		num positions      :  8
+		num normals        :  8
+		num uvs            :  0
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of camera (UniversalCamera):  Camera
+	processing begun of light (POINT):  Lamp
+========= Writing of scene file started =========
+========= Writing of scene file completed =========
+========= end of processing =========
+elapsed time:  0 min, 9.3924 secs

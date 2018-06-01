@@ -1,0 +1,258 @@
+Exporter version: 5.6.2, Blender version: 2.79 (sub 0)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used:
+		selected layers only:  false
+		inline textures:  false
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		texture directory:  C:\Users\Nicolas Bryan\Documents\Computer Graphics\Frogger\
+	Python World class constructor completed
+	processing begun of mesh:  mesh16
+		WARNING: No materials have been assigned: 
+		num positions      :  746
+		num normals        :  746
+		num uvs            :  1492
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  918
+	processing begun of mesh:  mesh17
+		WARNING: No materials have been assigned: 
+		num positions      :  1326
+		num normals        :  1326
+		num uvs            :  2652
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1704
+	processing begun of mesh:  mesh32
+		WARNING: No materials have been assigned: 
+		num positions      :  249
+		num normals        :  249
+		num uvs            :  498
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  348
+	processing begun of mesh:  mesh18
+		WARNING: No materials have been assigned: 
+		num positions      :  606
+		num normals        :  606
+		num uvs            :  1212
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  738
+	processing begun of mesh:  mesh31
+		WARNING: No materials have been assigned: 
+		num positions      :  786
+		num normals        :  786
+		num uvs            :  1572
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  996
+	processing begun of mesh:  mesh21
+		WARNING: No materials have been assigned: 
+		num positions      :  1843
+		num normals        :  1843
+		num uvs            :  3686
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  3264
+	processing begun of mesh:  mesh19
+		WARNING: No materials have been assigned: 
+		num positions      :  659
+		num normals        :  659
+		num uvs            :  1318
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  828
+	processing begun of mesh:  mesh24
+		WARNING: No materials have been assigned: 
+		num positions      :  431
+		num normals        :  431
+		num uvs            :  862
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  528
+	processing begun of mesh:  mesh13
+		WARNING: No materials have been assigned: 
+		num positions      :  394
+		num normals        :  394
+		num uvs            :  788
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  504
+	processing begun of mesh:  mesh01
+		WARNING: No materials have been assigned: 
+		num positions      :  422
+		num normals        :  422
+		num uvs            :  844
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  528
+	processing begun of mesh:  mesh04
+		WARNING: No materials have been assigned: 
+		num positions      :  368
+		num normals        :  368
+		num uvs            :  736
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  468
+	processing begun of mesh:  mesh11
+		WARNING: No materials have been assigned: 
+		num positions      :  912
+		num normals        :  912
+		num uvs            :  1824
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1116
+	processing begun of mesh:  mesh03
+		WARNING: No materials have been assigned: 
+		num positions      :  760
+		num normals        :  760
+		num uvs            :  1520
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  918
+	processing begun of mesh:  mesh26
+		WARNING: No materials have been assigned: 
+		num positions      :  1775
+		num normals        :  1775
+		num uvs            :  3550
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2256
+	processing begun of mesh:  mesh22
+		WARNING: No materials have been assigned: 
+		num positions      :  369
+		num normals        :  369
+		num uvs            :  738
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  468
+	processing begun of mesh:  mesh25
+		WARNING: No materials have been assigned: 
+		num positions      :  780
+		num normals        :  780
+		num uvs            :  1560
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  996
+	processing begun of mesh:  mesh30
+		WARNING: No materials have been assigned: 
+		num positions      :  603
+		num normals        :  603
+		num uvs            :  1206
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  738
+	processing begun of mesh:  mesh12
+		WARNING: No materials have been assigned: 
+		num positions      :  16
+		num normals        :  16
+		num uvs            :  32
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  84
+	processing begun of mesh:  mesh23
+		WARNING: No materials have been assigned: 
+		num positions      :  679
+		num normals        :  679
+		num uvs            :  1358
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  852
+	processing begun of mesh:  mesh20
+		WARNING: No materials have been assigned: 
+		num positions      :  249
+		num normals        :  249
+		num uvs            :  498
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  348
+	processing begun of mesh:  mesh02
+		WARNING: No materials have been assigned: 
+		num positions      :  16
+		num normals        :  16
+		num uvs            :  32
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  84
+	processing begun of mesh:  mesh10
+		WARNING: No materials have been assigned: 
+		num positions      :  564
+		num normals        :  564
+		num uvs            :  1128
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  708
+	processing begun of mesh:  mesh15
+		WARNING: No materials have been assigned: 
+		num positions      :  937
+		num normals        :  937
+		num uvs            :  1874
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1116
+	processing begun of mesh:  mesh05
+		WARNING: No materials have been assigned: 
+		num positions      :  1351
+		num normals        :  1351
+		num uvs            :  2702
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1704
+	processing begun of mesh:  mesh08
+		WARNING: No materials have been assigned: 
+		num positions      :  389
+		num normals        :  389
+		num uvs            :  778
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  504
+	processing begun of mesh:  mesh09
+		WARNING: No materials have been assigned: 
+		num positions      :  388
+		num normals        :  388
+		num uvs            :  776
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  504
+	processing begun of mesh:  mesh06
+		WARNING: No materials have been assigned: 
+		num positions      :  1854
+		num normals        :  1854
+		num uvs            :  3708
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  3264
+	processing begun of mesh:  mesh07
+		WARNING: No materials have been assigned: 
+		num positions      :  558
+		num normals        :  558
+		num uvs            :  1116
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  708
+	processing begun of mesh:  mesh29
+		WARNING: No materials have been assigned: 
+		num positions      :  664
+		num normals        :  664
+		num uvs            :  1328
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  828
+	processing begun of mesh:  mesh14
+		WARNING: No materials have been assigned: 
+		num positions      :  394
+		num normals        :  394
+		num uvs            :  788
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  504
+	processing begun of camera (UniversalCamera):  Camera
+	processing begun of light (POINT):  Lamp
+========= Writing of scene file started =========
+========= Writing of scene file completed =========
+========= end of processing =========
+elapsed time:  0 min, 1.1979 secs
