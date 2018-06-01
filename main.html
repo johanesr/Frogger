@@ -24,11 +24,17 @@
     engine = new BABYLON.Engine(canvas, true);
 
     scene = new BABYLON.Scene(engine);
-
     gravity = new BABYLON.Vector3(0,-9.81,0);
     physicsEngine = new BABYLON.CannonJSPlugin();
-
     scene.enablePhysics(gravity, physicsEngine);
+
+    var bb = new BABYLON.SceneLoader.ImportMesh("", "bb-unit-babylon/", "bb-unit.babylon", scene, function (newMeshes) {
+      bb8 = newMeshes[0];
+      bb8.scaling = new BABYLON.Vector3(0.025, 0.025, 0.025);
+      bb8.position.y=5;
+      bb8.physicsImpostor = new BABYLON.PhysicsImpostor(bb8,
+      BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
+    });
 
     ground = new BABYLON.Mesh.CreateGround("ground", 100000, 100000, 1,scene);
 
