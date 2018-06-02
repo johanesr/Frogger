@@ -24,21 +24,42 @@
     engine = new BABYLON.Engine(canvas, true);
 
     scene = new BABYLON.Scene(engine);
-
-    var robot =  BABYLON.SceneLoader.ImportMesh("", "", "robot3.babylon", scene, function(newMeshes) {
-      robot = newMeshes[0];
-      robot.scaling = new BABYLON.Vector3(5,5,5);
-    });
-
     gravity = new BABYLON.Vector3(0,-9.81,0);
     physicsEngine = new BABYLON.CannonJSPlugin();
-
     scene.enablePhysics(gravity, physicsEngine);
+
+    var camera = new BABYLON.FollowCamera("Camera", new BABYLON.Vector3(0, 4.5 ,10), scene);
+    camera.radius = 25;
+    camera.heightOffSet = 0;
+    //camera.rotationOffset = 90;
+    camera.cameraAcceleration = 0.5;
+    camera.attachControl(canvas, true);
 
     ground = new BABYLON.Mesh.CreateGround("ground", 100000, 100000, 1,scene);
 
     ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground,
     BABYLON.PhysicsImpostor.BoxImpostor, {mass:0, restitution: 0.2, friction: 0.2},scene);
+
+    var bb = new BABYLON.SceneLoader.ImportMesh("", "bb-unit-babylon/", "bb-unit.babylon", scene, function (newMeshes) {
+      bb8 = newMeshes[0];
+      bb8.scaling = new BABYLON.Vector3(0.02, 0.02, 0.02);
+      camera.lockedTarget = bb8;
+      //bb8.position.y=1.2;
+      bb8.position = new BABYLON.Vector3(0, 1.15, 10 );
+      //bb8.addRotation(0,Math.PI/4,0);
+      console.log(bb8.position);
+      bb8forward = function ()
+      {
+        forward(bb8,scene,bb8.position,function(){ jump = false});
+        console.log(bb8.position);
+      }
+      bb8back = function ()
+      {
+        back(bb8,scene,bb8.position,function(){ jump = false});
+      }
+      // bb8.physicsImpostor = new BABYLON.PhysicsImpostor(bb8,
+      // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
+    });
 
     var light = new BABYLON.HemisphericLight("hLight",
     new BABYLON.Vector3(0, 8, 0), scene);
@@ -47,6 +68,8 @@
 
     var box = new BABYLON.Mesh.CreateBox("box", 1.0, scene);
     box.position = new BABYLON.Vector3(0, 0.5, 10 );
+    box.isVisible = false;
+
     // box.physicsImpostor = new BABYLON.PhysicsImpostor(box,
     // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 1, friction: 0.2},scene);
 
@@ -61,14 +84,6 @@
     box.material = mat;
     box2.material = mat2;
 
-    var camera = new BABYLON.FollowCamera("Camera", new BABYLON.Vector3(0, 4.5 ,10), scene);
-    camera.radius = 25;
-    camera.heightOffSet = 0;
-    //camera.rotationOffset = -10;
-    camera.cameraAcceleration = 0.5;
-    camera.lockedTarget = box;
-    camera.attachControl(canvas, true);
-
     var clones = [];
 
     //scene.render();
@@ -78,14 +93,14 @@
       if(event.keyCode==87 && jump==false)
       {
         jump = true;
-        forward(box,scene,box.position, function(){ jump = false});
+        bb8forward();
         var clone = box2.createInstance("box2"+1);
         clones.push(clone);
       }
       if(event.keyCode==83 && jump==false)
       {
         jump = true;
-        back(box,scene,box.position, function(){ jump = false});
+        bb8back();
       }
     }
 
@@ -97,6 +112,7 @@
       {
         clones[i].position.x = clones[i].position.x - 0.25;
       }
+      //console.log(jump);
       scene.render();
     });
   });
