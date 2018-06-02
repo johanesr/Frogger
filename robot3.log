@@ -1,0 +1,90 @@
+Exporter version: 5.6.2, Blender version: 2.79 (sub 0)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used:
+		selected layers only:  false
+		inline textures:  false
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		texture directory:  C:\Users\Nicolas Bryan\Documents\Computer Graphics\Frogger\
+	Python World class constructor completed
+	processing begun of mesh:  Sphere.006
+		processing begun of baked material:  Sphere.006
+			Cycles baking texture, type: DIFFUSE, mapped using: UVMap
+		num positions      :  374
+		num normals        :  374
+		num uvs            :  748
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1008
+	processing begun of mesh:  Cube.010
+		processing begun of baked material:  Cube.010
+			Cycles baking texture, type: DIFFUSE, mapped using: UVMap
+		num positions      :  771
+		num normals        :  771
+		num uvs            :  1542
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1176
+	processing begun of mesh:  Sphere.005
+		processing begun of baked material:  Sphere.005
+			Cycles baking texture, type: DIFFUSE, mapped using: UVMap
+		num positions      :  542
+		num normals        :  542
+		num uvs            :  1084
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1584
+	processing begun of mesh:  Cylinder.008
+		processing begun of baked material:  Cylinder.008
+			Cycles baking texture, type: DIFFUSE, mapped using: UVMap
+		num positions      :  183
+		num normals        :  183
+		num uvs            :  366
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  264
+	processing begun of mesh:  Sphere.004
+		processing begun of baked material:  Sphere.004
+			Cycles baking texture, type: DIFFUSE, mapped using: UVMap
+		num positions      :  554
+		num normals        :  554
+		num uvs            :  1108
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1584
+	processing begun of mesh:  Cylinder.006
+		processing begun of baked material:  Cylinder.006
+			Cycles baking texture, type: DIFFUSE, mapped using: UVMap
+		num positions      :  183
+		num normals        :  183
+		num uvs            :  366
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  264
+	processing begun of mesh:  Sphere.002
+		processing begun of baked material:  Sphere.002
+			Cycles baking texture, type: DIFFUSE, mapped using: UVMap
+		num positions      :  537
+		num normals        :  537
+		num uvs            :  1074
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1584
+	processing begun of mesh:  Sphere.001
+		processing begun of baked material:  Sphere.001
+			Cycles baking texture, type: DIFFUSE, mapped using: UVMap
+		num positions      :  853
+		num normals        :  853
+		num uvs            :  1706
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  3312
+	processing begun of camera (UniversalCamera):  Camera
+	processing begun of light (POINT):  Lamp
+========= Writing of scene file started =========
+========= Writing of scene file completed =========
+========= end of processing =========
+elapsed time:  7 min, 42.2156 secs

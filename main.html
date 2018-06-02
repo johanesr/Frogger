@@ -25,6 +25,11 @@
 
     scene = new BABYLON.Scene(engine);
 
+    var robot =  BABYLON.SceneLoader.ImportMesh("", "", "robot3.babylon", scene, function(newMeshes) {
+      robot = newMeshes[0];
+      robot.scaling = new BABYLON.Vector3(5,5,5);
+    });
+
     gravity = new BABYLON.Vector3(0,-9.81,0);
     physicsEngine = new BABYLON.CannonJSPlugin();
 
