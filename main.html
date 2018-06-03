@@ -61,6 +61,12 @@
       // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
     });
 
+    var enemy = new BABYLON.SceneLoader.ImportMesh("", "stormtrooper-babylon/", "stormtrooper.babylon", scene, function (newMeshes) {
+      monster = newMeshes[0];
+      monster.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
+      // monster.position = new BABYLON.Vector3(0, 0, 0);
+    });
+
     var light = new BABYLON.HemisphericLight("hLight",
     new BABYLON.Vector3(0, 8, 0), scene);
 
