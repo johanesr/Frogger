@@ -78,9 +78,15 @@
         masterclones[masterclones.length-1].dispose();
         masterclones.pop();
         count = count+4;
-        console.log(masterclones.length);
+        //console.log(masterclones.length);
       }
-
+      disposefront = function (pos)
+      {
+        masterclones[0].dispose();
+        masterclones.shift();
+        //count = count+4;
+        //console.log(masterclones.length);
+      }
       mastercloning = function(pos)
       {
         if(pos>20)
@@ -102,6 +108,26 @@
         }
         else {
           count = count-4;
+        }
+      }
+      mastercloningback = function(pos)
+      {
+        if(pos>20)
+        {
+          var master = monster.clone();
+          master.isVisible = 0;
+          master.position.z = count+20;
+          //count = count-4;
+          if(pos<60)
+          {
+            master.position.x = 10;
+          }
+          else
+          {
+            master.position.x = -10;
+            master.addRotation(0,Math.PI,0);
+          }
+          masterclones.unshift(master);
         }
       }
       for(var i =0;i<=5;i++)
@@ -166,6 +192,10 @@
         jump = true;
         bb8forward();
         mastercloning(Math.floor((Math.random() * 100)));
+        if(count<-26 && masterclones.length>10)
+        {
+          disposefront(bb8.position.z);
+        }
         console.log(count);
       }
       if(event.keyCode==83 && jump==false)
@@ -173,10 +203,12 @@
         jump = true;
         bb8back();
         console.log(count);
-        if(count<-26)
+        // console.log(mas);
+        if(count<-26 && masterclones.length>10)
         {
-          console.log("hello");
-            dispose();
+          //console.log("hello");
+          dispose();
+          mastercloningback(Math.floor((Math.random() * 100)));
         }
       }
     }
