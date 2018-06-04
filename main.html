@@ -16,6 +16,7 @@
   <script>
 
   var canvas, engine, scene, camera;
+  var clones = [];
   var jump = false;
   document.addEventListener("DOMContentLoaded", function()
   {
@@ -61,11 +62,25 @@
       // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
     });
 
-    var enemy = new BABYLON.SceneLoader.ImportMesh("", "stormtrooper-babylon/", "stormtrooper.babylon", scene, function (newMeshes) {
+    var enemy=new BABYLON.SceneLoader.ImportMesh("", "stormtrooper-babylon/", "stormtrooper.babylon", scene, function (newMeshes) {
       monster = newMeshes[0];
       monster.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
+      cloning = function ()
+      {
+        var clone = monster.clone();
+        clones.push(clone);
+      };
+      move = function ()
+      {
+          for(var i = 0; i<clones.length;i++)
+          {
+            clones[i].position.x = clones[i].position.x - 0.25;
+            console.log(clones[i].position.x);
+          }
+      }
       // monster.position = new BABYLON.Vector3(0, 0, 0);
     });
+    //bb8foward();
 
     var light = new BABYLON.HemisphericLight("hLight",
     new BABYLON.Vector3(0, 8, 0), scene);
@@ -90,18 +105,17 @@
     box.material = mat;
     box2.material = mat2;
 
-    var clones = [];
-
     //scene.render();
     var test;
     window.onkeydown = function(event)
     {
+      //bb8forward();
       if(event.keyCode==87 && jump==false)
       {
         jump = true;
         bb8forward();
-        var clone = box2.createInstance("box2"+1);
-        clones.push(clone);
+        cloning();
+        console.log(clones.length);
       }
       if(event.keyCode==83 && jump==false)
       {
@@ -109,15 +123,18 @@
         bb8back();
       }
     }
-
     engine.runRenderLoop(function()
     {
+      if(clones.length>0)
+      {
+        move();
+      }
       // box.physicsImpostor.applyImpulse(new BABYLON.Vector3(-0.5,0,0),
       // box.getAbsolutePosition());
-      for(var i = 0; i<clones.length;i++)
-      {
-        clones[i].position.x = clones[i].position.x - 0.25;
-      }
+      //moveenemy();
+      // bb8forward();
+      //enemy.move();
+      // moving();
       //console.log(jump);
       scene.render();
     });
