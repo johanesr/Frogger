@@ -96,7 +96,7 @@
           count = count-4;
         }
       }
-      for(var i =0;i<10;i++)
+      for(var i =0;i<5;i++)
       {
         mastercloning(Math.floor((Math.random() * 100)));
       }
@@ -150,9 +150,6 @@
 
   });
 
-    //scene.render();
-
-
     window.onkeydown = function(event)
     {
       //bb8forward();
@@ -179,10 +176,14 @@
         }
         if(bb8!=null)
         {
-          console.log(count);
-          if(count-bb8.position.z > -100)
+          //console.log(count);
+          if(count-bb8.position.z > -)
           {
             mastercloning(Math.floor((Math.random() * 100)));
+          }
+          if(count>-2 && count-bb8.position.z < )
+          {
+
           }
         }
       }
