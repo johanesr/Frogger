@@ -9,6 +9,8 @@
   </script>
   <script type="text/javascript" src="animations.js">
   </script>
+  <script type="text/javascript" src="GroundTexture.js">
++  </script>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -20,7 +22,7 @@
   var canvas = document.getElementById("renderCanvas");
   var engine = new BABYLON.Engine(canvas, true);
   var start = false;
-      var count = -2;
+  var count = -46;
   var bb8;
 
   var createScene = function()
@@ -39,7 +41,10 @@
     camera.cameraAcceleration = 0.5;
     camera.attachControl(canvas, true);
 
+    groundTexture = GroundTexture(scene);
     ground = new BABYLON.Mesh.CreateGround("ground", 2000, 2000, 1,scene);
+    ground.material = groundTexture;
+
 
     ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground,
     BABYLON.PhysicsImpostor.BoxImpostor, {mass:0, restitution: 0.2, friction: 0.2},scene);
@@ -75,68 +80,68 @@
       console.log(monster.position);
       dispose = function ()
       {
-        masterclones[masterclones.length-1].dispose();
-        masterclones.pop();
-        count = count+4;
+        if(bb8.position.z-masterclones[masterclones.length-1].position.z>40)
+        {
+          masterclones[masterclones.length-1].dispose();
+          masterclones.pop();
+        }
         //console.log(masterclones.length);
       }
-      disposefront = function (pos)
+      disposefront = function ()
       {
-        if(pos-masterclones[0])
+        if(bb8.position.z-masterclones[0].position.z<-40)
         {
-          
+          masterclones[0].dispose();
+          masterclones.shift();
         }
-        masterclones[0].dispose();
-        masterclones.shift();
+
         //count = count+4;
         //console.log(masterclones.length);
       }
       mastercloning = function(pos)
       {
-        if(pos>20)
+        if(count==-46 || bb8.position.z-40<masterclones[masterclones.length-1].position.z)
         {
-          var master = monster.clone();
-          master.isVisible = 0;
-          master.position.z = count;
-          count = count-4;
-          if(pos<60)
+          if(pos>20)
           {
-            master.position.x = 10;
+            var master = monster.clone();
+            master.isVisible = 0;
+            master.position.z = bb8.position.z-40;
+            if(pos<60)
+            {
+              master.position.x = 10;
+            }
+            else
+            {
+              master.position.x = -10;
+              master.addRotation(0,Math.PI,0);
+            }
+            masterclones.push(master);
           }
-          else
-          {
-            master.position.x = -10;
-            master.addRotation(0,Math.PI,0);
-          }
-          masterclones.push(master);
-        }
-        else {
-          count = count-4;
         }
       }
-      mastercloningback = function(pos)
+      mastercloningback = function(pos,z)
       {
-        if(pos>20)
+        if(masterclones[0].position.z-bb8.position.z<40 && bb8.position.z<-42)
         {
-          var master = monster.clone();
-          master.isVisible = 0;
-          master.position.z = count+20;
-          //count = count-4;
-          if(pos<60)
+          if(pos>20)
           {
-            master.position.x = 10;
+            var master = monster.clone();
+            master.isVisible = 0;
+            master.position.z = bb8.position.z+40;
+            //count = count-4;
+            if(pos<60)
+            {
+              master.position.x = 10;
+            }
+            else
+            {
+              master.position.x = -10;
+              master.addRotation(0,Math.PI,0);
+            }
+            masterclones.unshift(master);
           }
-          else
-          {
-            master.position.x = -10;
-            master.addRotation(0,Math.PI,0);
-          }
-          masterclones.unshift(master);
         }
-      }
-      for(var i =0;i<=5;i++)
-      {
-        mastercloning(Math.floor((Math.random() * 100)));
       }
       cloning = function ()
       {
@@ -196,9 +201,10 @@
         jump = true;
         bb8forward();
         mastercloning(Math.floor((Math.random() * 100)));
-        if(count<-26 && masterclones.length>10)
+        count = count-4;
+        if(masterclones.length>20)
         {
-          disposefront(bb8.position.z);
+          disposefront();
         }
         console.log(count);
       }
@@ -206,13 +212,14 @@
       {
         jump = true;
         bb8back();
+        count = count+4;
         console.log(count);
         // console.log(mas);
-        if(count<-26 && masterclones.length>10)
+        mastercloningback(Math.floor((Math.random() * 100)));
+        if(masterclones.length>20)
         {
-          //console.log("hello");
           dispose();
-          mastercloningback(Math.floor((Math.random() * 100)));
+
         }
       }
     }
