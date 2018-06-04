@@ -14,15 +14,18 @@
 <body>
   <canvas id="renderCanvas"></canvas>
   <script>
-
-  var canvas, engine, scene, camera;
   var clones = [];
+  var masterclones = [];
   var jump = false;
-  document.addEventListener("DOMContentLoaded", function()
-  {
-    canvas = document.getElementById("renderCanvas");
+  var canvas = document.getElementById("renderCanvas");
+  var engine = new BABYLON.Engine(canvas, true);
+  var start = false;
+      var count = -2;
+  var bb8;
 
-    engine = new BABYLON.Engine(canvas, true);
+  var createScene = function()
+  {
+    var engine, scene, camera;
 
     scene = new BABYLON.Scene(engine);
     gravity = new BABYLON.Vector3(0,-9.81,0);
@@ -30,9 +33,9 @@
     scene.enablePhysics(gravity, physicsEngine);
 
     var camera = new BABYLON.FollowCamera("Camera", new BABYLON.Vector3(0, 4.5 ,10), scene);
-    camera.radius = 25;
-    camera.heightOffSet = 0;
-    //camera.rotationOffset = 90;
+    camera.radius = 35;
+    camera.heightOffSet = 50;
+  //  camera.rotationOffset = 90;
     camera.cameraAcceleration = 0.5;
     camera.attachControl(canvas, true);
 
@@ -41,14 +44,15 @@
     ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground,
     BABYLON.PhysicsImpostor.BoxImpostor, {mass:0, restitution: 0.2, friction: 0.2},scene);
 
-    var bb = new BABYLON.SceneLoader.ImportMesh("", "bb-unit-babylon/", "bb-unit.babylon", scene, function (newMeshes) {
+    new BABYLON.SceneLoader.ImportMesh("", "bb-unit-babylon/", "bb-unit.babylon", scene, function (newMeshes) {
       bb8 = newMeshes[0];
+      bb8.name = "bb8";
       bb8.scaling = new BABYLON.Vector3(0.02, 0.02, 0.02);
       camera.lockedTarget = bb8;
       //bb8.position.y=1.2;
       bb8.position = new BABYLON.Vector3(0, 1.15, 10 );
       //bb8.addRotation(0,Math.PI/4,0);
-      console.log(bb8.position);
+      //console.log(bb8.position);
       bb8forward = function ()
       {
         forward(bb8,scene,bb8.position,function(){ jump = false});
@@ -65,9 +69,41 @@
     var enemy=new BABYLON.SceneLoader.ImportMesh("", "stormtrooper-babylon/", "stormtrooper.babylon", scene, function (newMeshes) {
       monster = newMeshes[0];
       monster.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
+      monster.addRotation(0,89.5,0);
+      monster.position.x=120;
+      monster.isVisible = false;
+      console.log(monster.position);
+
+      mastercloning = function(pos)
+      {
+        if(pos>10)
+        {
+          var master = monster.clone();
+          monster.isVisible = false;
+          monster.position.z = count;
+          count = count-4;
+          if(pos<60)
+          {
+            monster.position.x = 10;
+          }
+          else
+          {
+            monster.position.x = -10;
+          }
+          masterclones.push(master);
+        }
+        else {
+          count = count-4;
+        }
+      }
+      for(var i =0;i<10;i++)
+      {
+        mastercloning(Math.floor((Math.random() * 100)));
+      }
       cloning = function ()
       {
         var clone = monster.clone();
+        clone.isVisible = true;
         clones.push(clone);
       };
       move = function ()
@@ -104,9 +140,19 @@
 
     box.material = mat;
     box2.material = mat2;
+    return scene;
+  }
+
+
+  document.addEventListener("DOMContentLoaded", function()
+  {
+
+
+  });
 
     //scene.render();
-    var test;
+
+
     window.onkeydown = function(event)
     {
       //bb8forward();
@@ -114,8 +160,7 @@
       {
         jump = true;
         bb8forward();
-        cloning();
-        console.log(clones.length);
+        console.log(masterclones.length);
       }
       if(event.keyCode==83 && jump==false)
       {
@@ -123,23 +168,26 @@
         bb8back();
       }
     }
+    var scene = createScene();
     engine.runRenderLoop(function()
     {
-      if(clones.length>0)
+      if(scene)
       {
-        move();
+        if(clones.length>1)
+        {
+          move();
+        }
+        if(bb8!=null)
+        {
+          console.log(count);
+          if(count-bb8.position.z > -100)
+          {
+            mastercloning(Math.floor((Math.random() * 100)));
+          }
+        }
       }
-      // box.physicsImpostor.applyImpulse(new BABYLON.Vector3(-0.5,0,0),
-      // box.getAbsolutePosition());
-      //moveenemy();
-      // bb8forward();
-      //enemy.move();
-      // moving();
-      //console.log(jump);
       scene.render();
     });
-  });
-
 
 </script>
 </body>
