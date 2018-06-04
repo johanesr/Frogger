@@ -39,7 +39,7 @@
     camera.cameraAcceleration = 0.5;
     camera.attachControl(canvas, true);
 
-    ground = new BABYLON.Mesh.CreateGround("ground", 100000, 100000, 1,scene);
+    ground = new BABYLON.Mesh.CreateGround("ground", 2000, 2000, 1,scene);
 
     ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground,
     BABYLON.PhysicsImpostor.BoxImpostor, {mass:0, restitution: 0.2, friction: 0.2},scene);
@@ -73,10 +73,17 @@
       monster.position.x;
       //monster.isVisible = false;
       console.log(monster.position);
+      dispose = function ()
+      {
+        masterclones[masterclones.length-1].dispose();
+        masterclones.pop();
+        count = count+4;
+        console.log(masterclones.length);
+      }
 
       mastercloning = function(pos)
       {
-        if(pos>10)
+        if(pos>20)
         {
           var master = monster.clone();
           master.isVisible = 0;
@@ -84,11 +91,11 @@
           count = count-4;
           if(pos<60)
           {
-            master.position.x = 120;
+            master.position.x = 10;
           }
           else
           {
-            master.position.x = -120;
+            master.position.x = -10;
             master.addRotation(0,Math.PI,0);
           }
           masterclones.push(master);
@@ -97,7 +104,7 @@
           count = count-4;
         }
       }
-      for(var i =0;i<5;i++)
+      for(var i =0;i<=5;i++)
       {
         mastercloning(Math.floor((Math.random() * 100)));
       }
@@ -158,13 +165,19 @@
       {
         jump = true;
         bb8forward();
-        //cloning();
-        console.log(clones.length);
+        mastercloning(Math.floor((Math.random() * 100)));
+        console.log(count);
       }
       if(event.keyCode==83 && jump==false)
       {
         jump = true;
         bb8back();
+        console.log(count);
+        if(count<-26)
+        {
+          console.log("hello");
+            dispose();
+        }
       }
     }
     var scene = createScene();
@@ -176,18 +189,14 @@
         {
           move();
         }
-        if(bb8!=null)
-        {
-          //console.log(count);
-          if(count-bb8.position.z > -)
-          {
-            mastercloning(Math.floor((Math.random() * 100)));
-          }
-          if(count>-2 && count-bb8.position.z < )
-          {
-
-          }
-        }
+        // if(bb8!=null)
+        // {
+        //   //console.log(count);
+        //   if(count-bb8.position.z > -23)
+        //   {
+        //     mastercloning(Math.floor((Math.random() * 100)));
+        //   }
+        // }
       }
       scene.render();
     });
