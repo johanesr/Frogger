@@ -69,9 +69,9 @@
     var enemy=new BABYLON.SceneLoader.ImportMesh("", "stormtrooper-babylon/", "stormtrooper.babylon", scene, function (newMeshes) {
       monster = newMeshes[0];
       monster.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
-      monster.addRotation(0,89.5,0);
-      monster.position.x=120;
-      monster.isVisible = false;
+      monster.addRotation(0,Math.PI/2,0);
+      monster.position.x;
+      //monster.isVisible = false;
       console.log(monster.position);
 
       mastercloning = function(pos)
@@ -79,16 +79,17 @@
         if(pos>10)
         {
           var master = monster.clone();
-          monster.isVisible = false;
-          monster.position.z = count;
+          master.isVisible = 0;
+          master.position.z = count;
           count = count-4;
           if(pos<60)
           {
-            monster.position.x = 10;
+            master.position.x = 120;
           }
           else
           {
-            monster.position.x = -10;
+            master.position.x = -120;
+            master.addRotation(0,Math.PI,0);
           }
           masterclones.push(master);
         }
@@ -103,7 +104,7 @@
       cloning = function ()
       {
         var clone = monster.clone();
-        clone.isVisible = true;
+        clone.isVisible =true;
         clones.push(clone);
       };
       move = function ()
@@ -157,7 +158,8 @@
       {
         jump = true;
         bb8forward();
-        console.log(masterclones.length);
+        //cloning();
+        console.log(clones.length);
       }
       if(event.keyCode==83 && jump==false)
       {
