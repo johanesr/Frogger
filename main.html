@@ -9,6 +9,8 @@
   </script>
   <script type="text/javascript" src="animations.js">
   </script>
+  <script type="text/javascript" src="GroundTexture.js">
+  </script>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -39,7 +41,10 @@
     camera.cameraAcceleration = 0.5;
     camera.attachControl(canvas, true);
 
+
+    groundTexture = GroundTexture(scene);
     ground = new BABYLON.Mesh.CreateGround("ground", 2000, 2000, 1,scene);
+    ground.material = groundTexture;
 
     ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground,
     BABYLON.PhysicsImpostor.BoxImpostor, {mass:0, restitution: 0.2, friction: 0.2},scene);
