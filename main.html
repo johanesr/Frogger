@@ -24,6 +24,9 @@
   var start = false;
   var count = -22;
   var bb8;
+  var posleft = 100;
+  var posright = -100;
+
 
   var createScene = function()
   {
@@ -33,13 +36,6 @@
     gravity = new BABYLON.Vector3(0,-9.81,0);
     physicsEngine = new BABYLON.CannonJSPlugin();
     scene.enablePhysics(gravity, physicsEngine);
-
-    var camera = new BABYLON.FollowCamera("Camera", new BABYLON.Vector3(0, 4.5 ,10), scene);
-    camera.radius = 35;
-    camera.heightOffSet = 50;
-    //camera.rotationOffset = 90;
-    camera.cameraAcceleration = 0.5;
-    camera.attachControl(canvas, true);
 
     // The box creation
     // var skybox = BABYLON.Mesh.CreateBox("skyBox", 2000.0, scene);
@@ -70,7 +66,7 @@
       bb8.position = new BABYLON.Vector3(0, 1.15, 10 );
       //bb8.addRotation(0,Math.PI/4,0);
       //console.log(bb8.position);
-      camera.lockedTarget = bb8;
+      //camera.lockedTarget = bb8;
       bb8forward = function ()
       {
         forward(bb8,scene,bb8.position,function(){ jump = false});
@@ -80,6 +76,15 @@
       {
         back(bb8,scene,bb8.position,function(){ jump = false});
       }
+      bb8left = function ()
+      {
+        left(bb8,scene,bb8.position,function(){ jump = false});
+      }
+      bb8right = function ()
+      {
+        right(bb8,scene,bb8.position,function(){ jump = false});
+      }
+
       // bb8.physicsImpostor = new BABYLON.PhysicsImpostor(bb8,
       // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
     });
@@ -89,12 +94,13 @@
       monster.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
       monster.addRotation(0,Math.PI/2,0);
       monster.position.x = 120;
+      monster.position.z = 50;
       console.log(monster.position);
       cleaning = function()
       {
         for(var i = 0; i<clones.length;i++)
         {
-          if(clones[i].position.x>55 || clones[i].position.x<-55)
+          if(clones[i].position.x>posleft+5 || clones[i].position.x<posright-5)
           {
             clones[i].dispose();
             clones.splice(i, 1);
@@ -150,18 +156,18 @@
             }
             if(pos<60)
             {
-              master.position.x = 50;
+              master.position.x = 999;
             }
             else
             {
-              master.position.x = -50;
+              master.position.x = -999;
               master.addRotation(0,Math.PI,0);
             }
             masterclones.push(master);
           }
 
       }
-      for(var i=0;i<6;i++)
+      for(var i=0;i<10;i++)
       {
         mastercloning(Math.floor((Math.random() * 80))+21);
       }
@@ -177,11 +183,11 @@
             //count = count-4;
             if(pos<60)
             {
-              master.position.x = 50;
+              master.position.x = 999;
             }
             else
             {
-              master.position.x = -50;
+              master.position.x = -999;
               master.addRotation(0,Math.PI,0);
             }
             masterclones.unshift(master);
@@ -191,10 +197,17 @@
       cloning = function ()
       {
         var num = Math.floor((Math.random() * masterclones.length));
-        if(Math.floor((Math.random() * 100))<50)
+        if(Math.floor((Math.random() * 100))<70)
         {
           var clone = masterclones[num].clone();
-          clone.scaling  = new BABYLON.Vector3(1.5,1.5,1.5);
+          clone.scaling  = new BABYLON.Vector3(2.25,2.25,2.25);
+          if(masterclones[num].position.x<0)
+          {
+            clone.position.x = posright;
+          }
+          else {
+            clone.position.x = posleft;
+          }
           clones.push(clone);
         }
       };
@@ -207,12 +220,12 @@
           {
             if(masterclones[i].position.z == clones[j].position.z)
             {
-              if(masterclones[i].position.x<0)
+              if(masterclones[i].position.x<bb8.position.z)
               {
-                clones[j].position.x = clones[j].position.x + 0.35;
+                clones[j].position.x = clones[j].position.x + 0.7;
               }
               else {
-                clones[j].position.x = clones[j].position.x - 0.35;
+                clones[j].position.x = clones[j].position.x - 0.7;
               }
               found =1;
             }
@@ -242,9 +255,6 @@
     box2.isVisible=true;
 
     var mat2 = createMat(scene);
-    var box = new BABYLON.Mesh.CreateBox("box", 1, scene);
-    box.position = new BABYLON.Vector3(-3, 15, 5);
-    box.setVisible = false;
 
     box2.material = mat2;
     return scene;
@@ -254,8 +264,8 @@
   document.addEventListener("DOMContentLoaded", function()
   {
 
-
   });
+
 
     window.onkeydown = function(event)
     {
@@ -264,11 +274,11 @@
       {
         jump = true;
         bb8forward();
+        forwardbox(box,scene,box.position);
         while(true)
         {
-          if(bb8.position.z-40<masterclones[masterclones.length-1].position.z)
+          if(bb8.position.z-120<masterclones[masterclones.length-1].position.z)
           {
-            console.log("HAHA");
             mastercloning(Math.floor((Math.random() * 100)));
           }
           else {
@@ -286,6 +296,7 @@
       {
         jump = true;
         bb8back();
+        backbox(box,scene,box.position);
         count = count+4;
         // console.log(mas);
         mastercloningback(Math.floor((Math.random() * 100)));
@@ -294,13 +305,41 @@
           disposing();
         }
       }
+      if(event.keyCode==65 && jump == false)
+      {
+
+        jump = true;
+        posleft = posleft+4;
+        console.log(posleft);
+        posright = posright+4;
+        bb8left();
+        leftbox(box,scene,box.position);
+      }
+      if(event.keyCode==68 && jump == false)
+      {
+        jump = true;
+        posleft = posleft-4;
+        posright = posright-4;
+        bb8right();
+        rightbox(box,scene,box.position);
+      }
     }
     var scene = createScene();
-      setInterval(function(){ cloning(); }, 250);
+      setInterval(function(){ cloning(); }, 300);
+      var box = new BABYLON.Mesh.CreateBox("box", 1, scene);
+      box.position = new BABYLON.Vector3(-3, 15, 30);
+      box.isVisible = false;
+      var camera = new BABYLON.FollowCamera("Camera", new BABYLON.Vector3(0, 4.5 ,10), scene);
+      camera.radius = 20;
+      camera.heightOffSet = 50;
+      //camera.rotationOffset = 90;
+      camera.cameraAcceleration = 0.5;
+      camera.attachControl(canvas, true);
+      camera.lockedTarget = box;
 
     engine.runRenderLoop(function()
     {
-      if(scene)
+      if(bb8!=null)
       {
         if(clones.length>1)
         {
