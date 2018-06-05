@@ -88,13 +88,13 @@
       monster = newMeshes[0];
       monster.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
       monster.addRotation(0,Math.PI/2,0);
-      monster.position.x;
+      monster.position.x = 120;
       console.log(monster.position);
       cleaning = function()
       {
         for(var i = 0; i<clones.length;i++)
         {
-          if(clones[i].position.x>101 || clones.position.x<-101)
+          if(clones[i].position.x>55 || clones[i].position.x<-55)
           {
             clones[i].dispose();
             clones.splice(i, 1);
@@ -150,11 +150,11 @@
             }
             if(pos<60)
             {
-              master.position.x = 100;
+              master.position.x = 50;
             }
             else
             {
-              master.position.x = -100;
+              master.position.x = -50;
               master.addRotation(0,Math.PI,0);
             }
             masterclones.push(master);
@@ -177,11 +177,11 @@
             //count = count-4;
             if(pos<60)
             {
-              master.position.x = 100;
+              master.position.x = 50;
             }
             else
             {
-              master.position.x = -100;
+              master.position.x = -50;
               master.addRotation(0,Math.PI,0);
             }
             masterclones.unshift(master);
@@ -209,10 +209,10 @@
             {
               if(masterclones[i].position.x<0)
               {
-                clones[j].position.x = clones[j].position.x + 0.25;
+                clones[j].position.x = clones[j].position.x + 0.35;
               }
               else {
-                clones[j].position.x = clones[j].position.x - 0.25;
+                clones[j].position.x = clones[j].position.x - 0.35;
               }
               found =1;
             }
@@ -242,6 +242,9 @@
     box2.isVisible=true;
 
     var mat2 = createMat(scene);
+    var box = new BABYLON.Mesh.CreateBox("box", 1, scene);
+    box.position = new BABYLON.Vector3(-3, 15, 5);
+    box.setVisible = false;
 
     box2.material = mat2;
     return scene;
@@ -261,10 +264,16 @@
       {
         jump = true;
         bb8forward();
-        if(bb8.position.z-40<masterclones[masterclones.length-1].position.z)
+        while(true)
         {
-          console.log("HAHA");
-          mastercloning(Math.floor((Math.random() * 100)));
+          if(bb8.position.z-40<masterclones[masterclones.length-1].position.z)
+          {
+            console.log("HAHA");
+            mastercloning(Math.floor((Math.random() * 100)));
+          }
+          else {
+            break;
+          }
         }
         count = count-4;
         if(masterclones.length>20)
@@ -287,7 +296,7 @@
       }
     }
     var scene = createScene();
-      setInterval(function(){ cloning(); }, 500);
+      setInterval(function(){ cloning(); }, 250);
 
     engine.runRenderLoop(function()
     {
@@ -296,6 +305,7 @@
         if(clones.length>1)
         {
           move();
+          cleaning();
         }
 
         // if(bb8!=null)
