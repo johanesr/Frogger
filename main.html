@@ -22,7 +22,7 @@
   var canvas = document.getElementById("renderCanvas");
   var engine = new BABYLON.Engine(canvas, true);
   var start = false;
-  var count = -46;
+  var count = -22;
   var bb8;
 
   var createScene = function()
@@ -37,14 +37,27 @@
     var camera = new BABYLON.FollowCamera("Camera", new BABYLON.Vector3(0, 4.5 ,10), scene);
     camera.radius = 35;
     camera.heightOffSet = 50;
-  //  camera.rotationOffset = 90;
+    //camera.rotationOffset = 90;
     camera.cameraAcceleration = 0.5;
     camera.attachControl(canvas, true);
+
+    // The box creation
+    // var skybox = BABYLON.Mesh.CreateBox("skyBox", 2000.0, scene);
+    //
+    // // The sky creation
+    // var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+    // skyboxMaterial.backFaceCulling = false;
+    // skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+    // skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+    // skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("assets/skybox/cubemap", scene);
+    // skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+    //
+    //
+    // skybox.material = skyboxMaterial;
 
     groundTexture = GroundTexture(scene);
     ground = new BABYLON.Mesh.CreateGround("ground", 2000, 2000, 1,scene);
     ground.material = groundTexture;
-
 
     ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground,
     BABYLON.PhysicsImpostor.BoxImpostor, {mass:0, restitution: 0.2, friction: 0.2},scene);
@@ -53,11 +66,11 @@
       bb8 = newMeshes[0];
       bb8.name = "bb8";
       bb8.scaling = new BABYLON.Vector3(0.02, 0.02, 0.02);
-      camera.lockedTarget = bb8;
       //bb8.position.y=1.2;
       bb8.position = new BABYLON.Vector3(0, 1.15, 10 );
       //bb8.addRotation(0,Math.PI/4,0);
       //console.log(bb8.position);
+      camera.lockedTarget = bb8;
       bb8forward = function ()
       {
         forward(bb8,scene,bb8.position,function(){ jump = false});
@@ -76,12 +89,30 @@
       monster.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
       monster.addRotation(0,Math.PI/2,0);
       monster.position.x;
-      //monster.isVisible = false;
       console.log(monster.position);
-      dispose = function ()
+      cleaning = function()
+      {
+        for(var i = 0; i<clones.length;i++)
+        {
+          if(clones[i].position.x>101 || clones.position.x<-101)
+          {
+            clones[i].dispose();
+            clones.splice(i, 1);
+          }
+        }
+      }
+      disposing = function ()
       {
         if(bb8.position.z-masterclones[masterclones.length-1].position.z>40)
         {
+          for(var i =0; i<clones.length;i++)
+          {
+            if(masterclones[masterclones.length-1].position.z == clones[i].position.z)
+            {
+              clones[i].dispose();
+              clones.splice(i,1);
+            }
+          }
           masterclones[masterclones.length-1].dispose();
           masterclones.pop();
         }
@@ -89,36 +120,50 @@
       }
       disposefront = function ()
       {
-        if(bb8.position.z-masterclones[0].position.z<-40)
+        if(bb8.position.z-masterclones[0].position.z<-20)
         {
+          for(var i =0; i<clones.length;i++)
+          {
+            if(masterclones[0].position.z == clones[i].position.z)
+            {
+              clones[i].dispose();
+              clones.splice(i,1);
+            }
+          }
           masterclones[0].dispose();
           masterclones.shift();
         }
-
-        //count = count+4;
-        //console.log(masterclones.length);
       }
       mastercloning = function(pos)
       {
-        if(count<=-46 || bb8.position.z-40<masterclones[masterclones.length-1].position.z)
-        {
           if(pos>20)
           {
             var master = monster.clone();
-            master.isVisible = 0;
-            master.position.z = bb8.position.z-40;
+            master.scaling = new BABYLON.Vector3(0.01,0.01,0.01);
+            if(masterclones.length!=0)
+            {
+              master.position.z = masterclones[masterclones.length-1].position.z-4;
+            }
+            else {
+              master.position.z = count;
+              count = count -4;
+            }
             if(pos<60)
             {
-              master.position.x = 10;
+              master.position.x = 100;
             }
             else
             {
-              master.position.x = -10;
+              master.position.x = -100;
               master.addRotation(0,Math.PI,0);
             }
             masterclones.push(master);
           }
-        }
+
+      }
+      for(var i=0;i<6;i++)
+      {
+        mastercloning(Math.floor((Math.random() * 80))+21);
       }
       mastercloningback = function(pos,z)
       {
@@ -127,16 +172,16 @@
           if(pos>20)
           {
             var master = monster.clone();
-            master.isVisible = 0;
-            master.position.z = bb8.position.z+40;
+            master.scaling = new BABYLON.Vector3(0.01,0.01,0.01);
+            master.position.z = masterclones[0].position.z+4;
             //count = count-4;
             if(pos<60)
             {
-              master.position.x = 10;
+              master.position.x = 100;
             }
             else
             {
-              master.position.x = -10;
+              master.position.x = -100;
               master.addRotation(0,Math.PI,0);
             }
             masterclones.unshift(master);
@@ -145,55 +190,59 @@
       }
       cloning = function ()
       {
-        var i;
-        for(i =0; i<masterclones.length;i++)
+        var num = Math.floor((Math.random() * masterclones.length));
+        if(Math.floor((Math.random() * 100))<50)
         {
-            console.log(i);
-            if(Math.floor((Math.random() * 100))<70)
-            {
-              setTimeout(function()
-              {
-                var clone = masterclones[i-1].clone();
-                clone.isVisible =true;
-                clones.push(clone);
-              }, 500);
-            }
-
+          var clone = masterclones[num].clone();
+          clone.scaling  = new BABYLON.Vector3(1.5,1.5,1.5);
+          clones.push(clone);
         }
       };
       move = function ()
       {
-          for(var i = 0; i<clones.length;i++)
+        for(var j = 0; j<clones.length;j++)
+        {
+          var found =0;
+          for(var i= 0; i<masterclones.length;i++)
           {
-            clones[i].position.x = clones[i].position.x - 0.25;
-//console.log(clones[i].position.x);
+            if(masterclones[i].position.z == clones[j].position.z)
+            {
+              if(masterclones[i].position.x<0)
+              {
+                clones[j].position.x = clones[j].position.x + 0.25;
+              }
+              else {
+                clones[j].position.x = clones[j].position.x - 0.25;
+              }
+              found =1;
+            }
+            else if(i == masterclones.length-1 && found ==0)
+            {
+              clones[j].dispose();
+              clones.splice(j,1);
+            }
           }
+        }
       }
       // monster.position = new BABYLON.Vector3(0, 0, 0);
     });
     //bb8foward();
 
     var light = new BABYLON.HemisphericLight("hLight",
-    new BABYLON.Vector3(0, 8, 0), scene);
+    new BABYLON.Vector3(0, 10, 0), scene);
 
-    var mat = createMat(scene);
 
-    var box = new BABYLON.Mesh.CreateBox("box", 1.0, scene);
-    box.position = new BABYLON.Vector3(0, 0.5, 10 );
-    box.isVisible = false;
+    //
 
-    // box.physicsImpostor = new BABYLON.PhysicsImpostor(box,
-    // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 1, friction: 0.2},scene);
-
-    var box2 = new BABYLON.Mesh.CreateBox("box2", 1.0, scene);
-    box2.position = new BABYLON.Vector3(60, 0.5, -2);
-    box2.physicsImpostor = new BABYLON.PhysicsImpostor(box2,
-    BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
-    box2.isVisible=false;
+    var box2 = new BABYLON.Mesh.CreateBox("box2", 4000, scene);
+    box2.scaling.z = 0.00025;
+    box2.position = new BABYLON.Vector3(0, 500, -975);
+    // box2.physicsImpostor = new BABYLON.PhysicsImpostor(box2,
+    // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
+    box2.isVisible=true;
 
     var mat2 = createMat(scene);
 
-    box.material = mat;
     box2.material = mat2;
     return scene;
   }
@@ -212,31 +261,34 @@
       {
         jump = true;
         bb8forward();
-        mastercloning(Math.floor((Math.random() * 100)));
+        if(bb8.position.z-40<masterclones[masterclones.length-1].position.z)
+        {
+          console.log("HAHA");
+          mastercloning(Math.floor((Math.random() * 100)));
+        }
         count = count-4;
         if(masterclones.length>20)
         {
           disposefront();
         }
-        console.log(count);
+        console.log(clones.length);
       }
-      if(event.keyCode==83 && jump==false)
+      if(event.keyCode==83 && jump==false && count<-46)
       {
         jump = true;
         bb8back();
         count = count+4;
-        console.log(count);
         // console.log(mas);
         mastercloningback(Math.floor((Math.random() * 100)));
         if(masterclones.length>20)
         {
-          dispose();
-
+          disposing();
         }
       }
     }
     var scene = createScene();
-    setInterval(function(){ cloning(); }, 1000);
+      setInterval(function(){ cloning(); }, 500);
+
     engine.runRenderLoop(function()
     {
       if(scene)

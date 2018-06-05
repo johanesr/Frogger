@@ -3,7 +3,7 @@ function GroundTexture(scene){
   mat.diffuseTexture = new BABYLON.Texture("assets/ground.jpg", scene);
   mat.specularPower = 25
   mat.ambientColor = new BABYLON.Color3(0.23,1.25,0.48);
-  mat.alpha = 0.75;
+  mat.alpha = 1;
 
   return mat;
 }
