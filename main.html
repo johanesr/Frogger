@@ -100,7 +100,7 @@
       }
       mastercloning = function(pos)
       {
-        if(count==-46 || bb8.position.z-40<masterclones[masterclones.length-1].position.z)
+        if(count<=-46 || bb8.position.z-40<masterclones[masterclones.length-1].position.z)
         {
           if(pos>20)
           {
@@ -145,16 +145,28 @@
       }
       cloning = function ()
       {
-        var clone = monster.clone();
-        clone.isVisible =true;
-        clones.push(clone);
+        var i;
+        for(i =0; i<masterclones.length;i++)
+        {
+            console.log(i);
+            if(Math.floor((Math.random() * 100))<70)
+            {
+              setTimeout(function()
+              {
+                var clone = masterclones[i-1].clone();
+                clone.isVisible =true;
+                clones.push(clone);
+              }, 500);
+            }
+
+        }
       };
       move = function ()
       {
           for(var i = 0; i<clones.length;i++)
           {
             clones[i].position.x = clones[i].position.x - 0.25;
-            console.log(clones[i].position.x);
+//console.log(clones[i].position.x);
           }
       }
       // monster.position = new BABYLON.Vector3(0, 0, 0);
@@ -224,6 +236,7 @@
       }
     }
     var scene = createScene();
+    setInterval(function(){ cloning(); }, 1000);
     engine.runRenderLoop(function()
     {
       if(scene)
@@ -232,6 +245,7 @@
         {
           move();
         }
+
         // if(bb8!=null)
         // {
         //   //console.log(count);
