@@ -41,6 +41,20 @@
     camera.cameraAcceleration = 0.5;
     camera.attachControl(canvas, true);
 
+    // The box creation
+    var skybox = BABYLON.Mesh.CreateBox("skyBox", 100.0, scene);
+
+    // The sky creation
+    var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+    skyboxMaterial.backFaceCulling = false;
+    skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+    skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+    skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("assets/skybox/cubemap", scene);
+    skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+
+
+    skybox.material = skyboxMaterial;
+
     groundTexture = GroundTexture(scene);
     ground = new BABYLON.Mesh.CreateGround("ground", 2000, 2000, 1,scene);
     ground.material = groundTexture;
