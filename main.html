@@ -10,7 +10,10 @@
   <script type="text/javascript" src="animations.js">
   </script>
   <script type="text/javascript" src="GroundTexture.js">
-+  </script>
+  </script>
+  <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js">
+
+  </script>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -27,6 +30,8 @@
   var posleft = 100;
   var posright = -100;
   var dead = false;
+  var score = 0;
+  var highest = -18;
 
   var createScene = function()
   {
@@ -65,7 +70,7 @@
       bb8forward = function ()
       {
         forward(bb8,scene,bb8.position,function(){ jump = false});
-        console.log(bb8.position);
+        //console.log(bb8.position);
       }
       bb8back = function ()
       {
@@ -151,7 +156,7 @@
           {
             var master = monster.clone();
             master.scaling = new BABYLON.Vector3(0.01,0.01,0.01);
-            if(masterclones.length!=0)
+            if(masterclones.length>=10)
             {
               master.position.z = masterclones[masterclones.length-1].position.z-4;
             }
@@ -214,7 +219,7 @@
           }
           clones.push(clone);
       };
-      cloning();
+      //cloning();
       move = function ()
       {
         for(var j = 0; j<clones.length;j++)
@@ -265,12 +270,6 @@
     var light = new BABYLON.HemisphericLight("hLight",
     new BABYLON.Vector3(0, 10, 0), scene);
 
-
-    //
-
-
-
-
     var sideWall = new BABYLON.Mesh.CreateBox("sideWall", 2000, scene);
     sideWall.scaling.x = 0.00025;
     sideWall.position = new BABYLON.Vector3(1000, 1000, 0);
@@ -281,16 +280,13 @@
     var mat3 = createMatSide(scene);
 
     sideWall.material = mat3;
+
     return scene;
   }
 
 
   document.addEventListener("DOMContentLoaded", function()
   {
-
-  });
-
-
     window.onkeydown = function(event)
     {
       //bb8forward();
@@ -300,9 +296,17 @@
         bb8forward();
         forwardbox(box,scene,box.position);
         forwardbox(boxcollision,scene,boxcollision);
+        console.log(masterclones[0].position.z);
+        if(bb8.position.z<highest)
+        {
+          highest = bb8.position.z;
+          score = score + 1;
+          scoreTxt.text = "Score: " + score;
+          console.log(score);
+        }
         while(true)
         {
-          if(bb8.position.z-120<masterclones[masterclones.length-1].position.z)
+          if(bb8.position.z-160<masterclones[masterclones.length-1].position.z)
           {
             mastercloning(Math.floor((Math.random() * 100)));
           }
@@ -317,7 +321,7 @@
         }
         //console.log(clones.length);
       }
-      if(event.keyCode==83 && jump==false && count<-46 && dead==false)
+      if(event.keyCode==83 && jump==false && bb8.position.z<=-18 && dead==false)
       {
         jump = true;
         bb8back();
@@ -353,7 +357,17 @@
       }
     }
     var scene = createScene();
-      setInterval(function(){ cloning(); }, 100);
+
+    // GUI Score
+    var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI('UI', undefined, undefined, BABYLON.Texture.NEAREST_NEAREST);
+    var scoreTxt = new BABYLON.GUI.TextBlock();
+    scoreTxt.color = "white";
+    scoreTxt.fontSize = 24;
+    advancedTexture.addControl(scoreTxt);
+    scoreTxt.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+    scoreTxt.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+
+      setInterval(function(){ cloning(); }, 150);
       var box = new BABYLON.Mesh.CreateBox("box", 1, scene);
       box.position = new BABYLON.Vector3(-30, 15, 30);
       box.isVisible = false;
@@ -407,8 +421,13 @@
         //   }
         // }
       }
+
       scene.render();
     });
+  });
+
+
+
 
 </script>
 </body>
