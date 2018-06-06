@@ -280,6 +280,17 @@
     var mat2 = createMat(scene);
 
     box2.material = mat2;
+
+    var sideWall = new BABYLON.Mesh.CreateBox("sideWall", 4000, scene);
+    sideWall.scaling.x = 0.00025;
+    sideWall.position = new BABYLON.Vector3(1000, 1000, 0);
+    // box2.physicsImpostor = new BABYLON.PhysicsImpostor(box2,
+    // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
+    sideWall.isVisible=true;
+
+    var mat3 = createMatSide(scene);
+
+    sideWall.material = mat3;
     return scene;
   }
 
