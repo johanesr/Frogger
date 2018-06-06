@@ -91,6 +91,7 @@
       }
       die = function()
       {
+        alert("You have died!, total score earned : " + score);
         bb8.scaling.y = 0.01;
         dead = true;
       }
@@ -377,7 +378,7 @@
     startTxt.fontSize = 32;
     advancedTexture2.addControl(startTxt);
     startTxt.text = "Press [Space] to pause game";
-    startTxt.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+    startTxt.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
     startTxt.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
 
     // GUI Score
@@ -437,7 +438,7 @@
         }
         if(bb8.position.z<=-950)
         {
-          alert("Congratatulation, You won!")
+          alert("Congratatulation, You won! with total score : " + score);
         }
 
         //collideGround();
