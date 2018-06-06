@@ -371,7 +371,7 @@
     }
     var scene = createScene();
 
-    // START GUI
+    // PAUSE GUI
     var advancedTexture2 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI('UI', undefined, undefined, BABYLON.Texture.NEAREST_NEAREST);
     var startTxt = new BABYLON.GUI.TextBlock();
     startTxt.color = "white";
@@ -430,7 +430,7 @@
     {
       if(bb8!=null)
       {
-        //collision(boxcollision);
+        // collision(boxcollision);
         if(clones.length>1)
         {
           move();
