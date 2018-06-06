@@ -51,12 +51,7 @@
     //
     // skybox.material = skyboxMaterial;
 
-    groundTexture = GroundTexture(scene);
-    ground = new BABYLON.Mesh.CreateGround("ground", 2000, 2000, 1,scene);
-    ground.material = groundTexture;
 
-    ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground,
-    BABYLON.PhysicsImpostor.BoxImpostor, {mass:0, restitution: 0.2, friction: 0.2},scene);
 
     new BABYLON.SceneLoader.ImportMesh("", "bb-unit-babylon/", "bb-unit.babylon", scene, function (newMeshes) {
       bb8 = newMeshes[0];
@@ -88,6 +83,10 @@
       {
         return bb8;
       }
+      die = function()
+      {
+        bb8.scaling.y = 0.01;
+      }
 
       // bb8.physicsImpostor = new BABYLON.PhysicsImpostor(bb8,
       // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
@@ -97,9 +96,9 @@
       monster = newMeshes[0];
       monster.scaling = new BABYLON.Vector3(2.25, 2.25, 2.25);
       monster.addRotation(0,Math.PI/2,0);
-      monster.position.x = 0;
-      monster.position.z = -2;
-      monster.position.y = 1.15;
+      monster.position.x = 1000;
+      monster.position.z = 1000;
+      monster.position.y = 0;
       console.log(monster.position);
       cleaning = function()
       {
@@ -202,11 +201,9 @@
       cloning = function ()
       {
         var num = Math.floor((Math.random() * masterclones.length));
-        if(Math.floor((Math.random() * 100))<70)
-        {
           var clone = masterclones[num].clone();
           clone.scaling  = new BABYLON.Vector3(2.25,2.25,2.25);
-          clone.position.y = 1.15;
+          clone.position.y = 0;
           if(masterclones[num].position.x<0)
           {
             clone.position.x = posright;
@@ -215,7 +212,6 @@
             clone.position.x = posleft;
           }
           clones.push(clone);
-        }
       };
       cloning();
       move = function ()
@@ -252,6 +248,7 @@
             if(clone.intersectsMesh(bb8,true))
             {
               console.log("YOU ARE DED");
+              die();
             }
           }
         );
@@ -270,16 +267,9 @@
 
     //
 
-    var box2 = new BABYLON.Mesh.CreateBox("box2", 4000, scene);
-    box2.scaling.z = 0.00025;
-    box2.position = new BABYLON.Vector3(0, 500, -975);
-    // box2.physicsImpostor = new BABYLON.PhysicsImpostor(box2,
-    // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
-    box2.isVisible=true;
 
-    var mat2 = createMat(scene);
 
-    box2.material = mat2;
+
     return scene;
   }
 
@@ -298,6 +288,7 @@
         jump = true;
         bb8forward();
         forwardbox(box,scene,box.position);
+        forwardbox(boxcollision,scene,boxcollision);
         while(true)
         {
           if(bb8.position.z-120<masterclones[masterclones.length-1].position.z)
@@ -320,6 +311,7 @@
         jump = true;
         bb8back();
         backbox(box,scene,box.position);
+        backbox(boxcollision,scene,boxcollision.position);
         count = count+4;
         // console.log(mas);
         mastercloningback(Math.floor((Math.random() * 100)));
@@ -337,6 +329,7 @@
         posright = posright+4;
         bb8left();
         leftbox(box,scene,box.position);
+        leftbox(boxcollision,scene,boxcollision.position);
       }
       if(event.keyCode==68 && jump == false)
       {
@@ -345,26 +338,47 @@
         posright = posright-4;
         bb8right();
         rightbox(box,scene,box.position);
+        rightbox(boxcollision,scene,boxcollision.position);
       }
     }
     var scene = createScene();
-      setInterval(function(){ cloning(); }, 300);
+      setInterval(function(){ cloning(); }, 100);
       var box = new BABYLON.Mesh.CreateBox("box", 1, scene);
-      box.position = new BABYLON.Vector3(-3, 15, 30);
+      box.position = new BABYLON.Vector3(-30, 15, 30);
       box.isVisible = false;
       var camera = new BABYLON.FollowCamera("Camera", new BABYLON.Vector3(0, 4.5 ,10), scene);
       camera.radius = 20;
       camera.heightOffSet = 50;
-      //camera.rotationOffset = -90;
+      camera.rotationOffset = -45;
       camera.cameraAcceleration = 0.5;
       camera.attachControl(canvas, true);
       camera.lockedTarget = box;
+
+      var boxcollision = new BABYLON.Mesh.CreateBox("boxcollision", 1, scene);
+      boxcollision.position = new BABYLON.Vector3(0,0,10);
+      boxcollision.isVisible=false;
+
+      groundTexture = GroundTexture(scene);
+      ground = new BABYLON.Mesh.CreateGround("ground", 2000, 2000, 1,scene);
+      ground.material = groundTexture;
+      ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground,
+      BABYLON.PhysicsImpostor.BoxImpostor, {mass:0, restitution: 0.2, friction: 0.2},scene);
+
+      var box2 = new BABYLON.Mesh.CreateBox("box2", 4000, scene);
+      box2.scaling.z = 0.00025;
+      box2.position = new BABYLON.Vector3(0, 500, -975);
+      // box2.physicsImpostor = new BABYLON.PhysicsImpostor(box2,
+      // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
+      box2.isVisible=true;
+      var mat2 = createMat(scene);
+
+      box2.material = mat2;
 
     engine.runRenderLoop(function()
     {
       if(bb8!=null)
       {
-        collision(getbb());
+        collision(boxcollision);
         if(clones.length>1)
         {
           move();
