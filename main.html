@@ -290,7 +290,7 @@
     window.onkeydown = function(event)
     {
       //bb8forward();
-      if(event.keyCode==87 && jump==false && dead == false)
+      if(event.keyCode==87 && jump==false && dead == false && bb8.position.z>=-950)
       {
         jump = true;
         bb8forward();
@@ -304,7 +304,7 @@
           scoreTxt.text = "Score: " + score;
           console.log(score);
         }
-        while(true)
+        while(true && masterclones[masterclones.length-1].position.z>-946)
         {
           if(bb8.position.z-160<masterclones[masterclones.length-1].position.z)
           {
@@ -321,7 +321,7 @@
         }
         //console.log(clones.length);
       }
-      if(event.keyCode==83 && jump==false && bb8.position.z<=-18 && dead==false)
+      if(event.keyCode==83 && jump==false && bb8.position.z<=-18 && dead==false && bb8.position.z>=-950)
       {
         jump = true;
         bb8back();
@@ -379,6 +379,10 @@
       camera.attachControl(canvas, true);
       camera.lockedTarget = box;
 
+      var finish = new BABYLON.Mesh.CreateBox("finish", 2000,scene);
+      finish.position  = new BABYLON.Vector3(0,0,-950);
+      finish.scaling = new BABYLON.Vector3(1,0.0001,0.0025);
+
       var boxcollision = new BABYLON.Mesh.CreateBox("boxcollision", 1, scene);
       boxcollision.position = new BABYLON.Vector3(0,0,10);
       boxcollision.isVisible=false;
@@ -403,7 +407,7 @@
     {
       if(bb8!=null)
       {
-        collision(boxcollision);
+        //collision(boxcollision);
         if(clones.length>1)
         {
           move();
