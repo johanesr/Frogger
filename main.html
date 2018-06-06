@@ -32,6 +32,7 @@
   var dead = false;
   var score = 0;
   var highest = -18;
+  var isStart = true;
 
   var createScene = function()
   {
@@ -355,8 +356,29 @@
         rightbox(box,scene,box.position);
         rightbox(boxcollision,scene,boxcollision.position);
       }
+
+      if(event.keyCode==32 && isStart==false) {
+        isStart = true;
+        engine.runRenderLoop(function() {start()});
+        startTxt.text = "";
+      } else if(event.keyCode == 32 && isStart==true) {
+        isStart = false;
+        engine.stopRenderLoop();
+        startTxt.text = "Press [Space] to pause game";
+      }
+
     }
     var scene = createScene();
+
+    // START GUI
+    var advancedTexture2 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI('UI', undefined, undefined, BABYLON.Texture.NEAREST_NEAREST);
+    var startTxt = new BABYLON.GUI.TextBlock();
+    startTxt.color = "white";
+    startTxt.fontSize = 32;
+    advancedTexture2.addControl(startTxt);
+    startTxt.text = "Press [Space] to pause game";
+    startTxt.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+    startTxt.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
 
     // GUI Score
     var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI('UI', undefined, undefined, BABYLON.Texture.NEAREST_NEAREST);
@@ -403,7 +425,7 @@
 
       box2.material = mat2;
 
-    engine.runRenderLoop(function()
+    engine.runRenderLoop(start = function()
     {
       if(bb8!=null)
       {
@@ -412,6 +434,10 @@
         {
           move();
           cleaning();
+        }
+        if(bb8.position.z<=-950)
+        {
+          alert("Congratatulation, You won!")
         }
 
         //collideGround();
