@@ -26,7 +26,7 @@
   var bb8;
   var posleft = 100;
   var posright = -100;
-
+  var dead = false;
 
   var createScene = function()
   {
@@ -86,6 +86,7 @@
       die = function()
       {
         bb8.scaling.y = 0.01;
+        dead = true;
       }
 
       // bb8.physicsImpostor = new BABYLON.PhysicsImpostor(bb8,
@@ -293,7 +294,7 @@
     window.onkeydown = function(event)
     {
       //bb8forward();
-      if(event.keyCode==87 && jump==false)
+      if(event.keyCode==87 && jump==false && dead == false)
       {
         jump = true;
         bb8forward();
@@ -316,7 +317,7 @@
         }
         //console.log(clones.length);
       }
-      if(event.keyCode==83 && jump==false && count<-46)
+      if(event.keyCode==83 && jump==false && count<-46 && dead==false)
       {
         jump = true;
         bb8back();
@@ -330,7 +331,7 @@
           disposing();
         }
       }
-      if(event.keyCode==65 && jump == false)
+      if(event.keyCode==65 && jump == false && dead == false)
       {
 
         jump = true;
@@ -341,7 +342,7 @@
         leftbox(box,scene,box.position);
         leftbox(boxcollision,scene,boxcollision.position);
       }
-      if(event.keyCode==68 && jump == false)
+      if(event.keyCode==68 && jump == false && dead == false)
       {
         jump = true;
         posleft = posleft-4;
