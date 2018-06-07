@@ -94,6 +94,7 @@
         alert("You have died!, total score earned : " + score);
         bb8.scaling.y = 0.01;
         dead = true;
+        window.location = "index.html";
       }
 
       // bb8.physicsImpostor = new BABYLON.PhysicsImpostor(bb8,
@@ -439,6 +440,7 @@
         if(bb8.position.z<=-950)
         {
           alert("Congratatulation, You won! with total score : " + score);
+          window.location = "index.html";
         }
 
         //collideGround();
