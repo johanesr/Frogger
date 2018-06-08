@@ -58,7 +58,7 @@
     // skybox.material = skyboxMaterial;
 
 
-
+    // Johanes Ronaldo
     new BABYLON.SceneLoader.ImportMesh("", "bb-unit-babylon/", "bb-unit.babylon", scene, function (newMeshes) {
       bb8 = newMeshes[0];
       bb8.name = "bb8";
@@ -68,6 +68,8 @@
       //bb8.addRotation(0,Math.PI/4,0);
       //console.log(bb8.position);
       //camera.lockedTarget = bb8;
+
+      // Nicolas Bryan
       bb8forward = function ()
       {
         forward(bb8,scene,bb8.position,function(){ jump = false});
@@ -101,6 +103,7 @@
       // BABYLON.PhysicsImpostor.BoxImpostor,{mass:1, restitution: 0.5, friction: 0.2},scene);
     });
 
+    // Johanes Ronaldo
     var enemy=new BABYLON.SceneLoader.ImportMesh("", "stormtrooper-babylon/", "stormtrooper.babylon", scene, function (newMeshes) {
       monster = newMeshes[0];
       monster.scaling = new BABYLON.Vector3(2.25, 2.25, 2.25);
@@ -109,6 +112,7 @@
       monster.position.z = 1000;
       monster.position.y = 0;
       console.log(monster.position);
+      // Nicolas Bryan
       cleaning = function()
       {
         for(var i = 0; i<clones.length;i++)
@@ -120,6 +124,7 @@
           }
         }
       }
+      // Nicolas Bryan
       disposing = function ()
       {
         if(bb8.position.z-masterclones[masterclones.length-1].position.z>40)
@@ -137,6 +142,7 @@
         }
         //console.log(masterclones.length);
       }
+      // Nicolas Bryan
       disposefront = function ()
       {
         if(bb8.position.z-masterclones[0].position.z<-20)
@@ -153,6 +159,7 @@
           masterclones.shift();
         }
       }
+      // Johanes Ronaldo
       mastercloning = function(pos)
       {
           if(pos>20)
@@ -184,6 +191,7 @@
       {
         mastercloning(Math.floor((Math.random() * 80))+21);
       }
+      // Nicolas Bryan
       mastercloningback = function(pos,z)
       {
         if(masterclones[0].position.z-bb8.position.z<40 && bb8.position.z<-42)
@@ -207,6 +215,7 @@
           }
         }
       }
+      // Nicolas Bryan
       cloning = function ()
       {
         var num = Math.floor((Math.random() * masterclones.length));
@@ -223,6 +232,7 @@
           clones.push(clone);
       };
       //cloning();
+      // Nicolas Bryan
       move = function ()
       {
         for(var j = 0; j<clones.length;j++)
@@ -270,6 +280,7 @@
     });
     //bb8foward();
 
+    // Daniel Juanda
     var light = new BABYLON.HemisphericLight("hLight",
     new BABYLON.Vector3(0, 10, 0), scene);
 
@@ -293,6 +304,7 @@
     window.onkeydown = function(event)
     {
       //bb8forward();
+      // Nicolas Bryan
       if(event.keyCode==87 && jump==false && dead == false && bb8.position.z>=-950)
       {
         jump = true;
@@ -359,6 +371,7 @@
         rightbox(boxcollision,scene,boxcollision.position);
       }
 
+      // Daniel Juanda
       if(event.keyCode==32 && isStart==false) {
         isStart = true;
         engine.runRenderLoop(function() {start()});
@@ -373,6 +386,7 @@
     var scene = createScene();
 
     // PAUSE GUI
+    // Daniel Juanda
     var advancedTexture2 = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI('UI', undefined, undefined, BABYLON.Texture.NEAREST_NEAREST);
     var startTxt = new BABYLON.GUI.TextBlock();
     startTxt.color = "white";
@@ -383,6 +397,7 @@
     startTxt.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
 
     // GUI Score
+    // Johanes Ronaldo
     var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI('UI', undefined, undefined, BABYLON.Texture.NEAREST_NEAREST);
     var scoreTxt = new BABYLON.GUI.TextBlock();
     scoreTxt.color = "white";
@@ -391,6 +406,7 @@
     scoreTxt.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
     scoreTxt.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
 
+      // Nicolas Bruam
       setInterval(function(){ cloning(); }, 150);
       var box = new BABYLON.Mesh.CreateBox("box", 1, scene);
       box.position = new BABYLON.Vector3(-30, 15, 30);
@@ -407,6 +423,7 @@
       finish.position  = new BABYLON.Vector3(0,0,-950);
       finish.scaling = new BABYLON.Vector3(1,0.0001,0.0025);
 
+      // Daniel Juanda
       var boxcollision = new BABYLON.Mesh.CreateBox("boxcollision", 1, scene);
       boxcollision.position = new BABYLON.Vector3(0,0,10);
       boxcollision.isVisible=false;
@@ -429,6 +446,7 @@
 
     engine.runRenderLoop(start = function()
     {
+      // Daniel Juanda
       if(bb8!=null)
       {
         collision(boxcollision);
@@ -437,6 +455,7 @@
           move();
           cleaning();
         }
+        // Johanes Ronaldo
         if(bb8.position.z<=-950)
         {
           alert("Congratatulation, You won! with total score : " + score);
